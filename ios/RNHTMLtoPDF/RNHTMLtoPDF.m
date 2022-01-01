@@ -188,7 +188,7 @@ RCT_EXPORT_METHOD(convert:(NSDictionary *)options
     
     CGFloat height = [result floatValue];
      // do with the height
-    NSLog(@"%f", height);
+    NSLog(@"KEN %f", height);
     if(height < 1600) {
         _PDFSize = CGSizeMake(_PDFSize.width, height);
     }
@@ -216,6 +216,7 @@ RCT_EXPORT_METHOD(convert:(NSDictionary *)options
         NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
                               pdfBase64, @"base64",
                               [NSString stringWithFormat: @"%ld", (long)_numberOfPages], @"numberOfPages",
+                              [NSString stringWithFormat: @"%ld", (long)height], @"heightOfPages",
                               _filePath, @"filePath", nil];
         _resolveBlock(data);
     } else {
