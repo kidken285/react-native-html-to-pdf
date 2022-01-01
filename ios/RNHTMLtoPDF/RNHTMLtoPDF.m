@@ -184,7 +184,14 @@ RCT_EXPORT_METHOD(convert:(NSDictionary *)options
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     if (webView.isLoading)
     return;
+    NSString *result = [self stringByEvaluatingJavaScriptFromString:@"Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight)"];
     
+    CGFloat height = [result floatValue];
+     // do with the height
+    NSLog(@"%f", height);
+    if(height < 1600) {
+        _PDFSize = CGSizeMake(_PDFSize.width, height);
+    }
     UIPrintPageRenderer *render = [[UIPrintPageRenderer alloc] init];
     [render addPrintFormatter:webView.viewPrintFormatter startingAtPageAtIndex:0];
     
