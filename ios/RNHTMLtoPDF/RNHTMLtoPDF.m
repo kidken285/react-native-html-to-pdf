@@ -189,9 +189,7 @@ RCT_EXPORT_METHOD(convert:(NSDictionary *)options
     CGFloat height = [result floatValue];
      // do with the height
     NSLog(@"KEN %f", height);
-    if(height < 1600) {
-        _PDFSize = CGSizeMake(_PDFSize.width, height);
-    }
+
     UIPrintPageRenderer *render = [[UIPrintPageRenderer alloc] init];
     [render addPrintFormatter:webView.viewPrintFormatter startingAtPageAtIndex:0];
     
